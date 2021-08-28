@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:money_buddy_mobile/authentication/ui/sign_up_page.dart';
+import 'package:money_buddy_mobile/authentication/ui/sign_in_page.dart';
 import 'package:money_buddy_mobile/config/ui_helpers.dart';
 import 'package:money_buddy_mobile/model/user_model.dart';
 import 'package:money_buddy_mobile/ui/landing_page.dart';
@@ -62,7 +62,7 @@ class AuthController extends GetxController {
     }
 
     if (_firebaseUser == null) {
-      Get.offAll(() => SignUpPage());
+      Get.offAll(() => SignInPage());
     } else {
       Get.offAll(() => LandingPage());
     }

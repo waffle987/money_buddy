@@ -4,6 +4,7 @@ import 'package:get/state_manager.dart';
 import 'package:money_buddy_mobile/authentication/controllers/auth_controller.dart';
 import 'package:money_buddy_mobile/authentication/ui/reset_password_page.dart';
 import 'package:money_buddy_mobile/authentication/ui/sign_up_page.dart';
+import 'package:money_buddy_mobile/config/assets.dart';
 import 'package:money_buddy_mobile/config/ui_helpers.dart';
 import 'package:money_buddy_mobile/widgets/busy_button.dart';
 import 'package:money_buddy_mobile/widgets/input_field.dart';
@@ -30,7 +31,7 @@ class SignInPage extends StatelessWidget {
                 tag: 'logo',
                 transitionOnUserGestures: true,
                 child: CircleAvatar(
-                  child: Text("\$"),
+                  backgroundImage: AssetImage(Assets.logo),
                   radius: 120.0,
                   backgroundColor: kPrimaryColour,
                 ),
@@ -38,6 +39,7 @@ class SignInPage extends StatelessWidget {
               verticalSpaceTiny,
               Text(
                 'Welcome to Money Buddy',
+                textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 30.0,
                   color: Colors.white,
@@ -69,13 +71,13 @@ class SignInPage extends StatelessWidget {
                 busy: false,
                 onTap: () =>
                     _authController.signInWithEmailAndPassword(context),
-                color: kPrimaryColour,
+                color: kSecondaryColor,
               ),
               verticalSpaceMedium,
               TextLink(
                 text: 'Create an Account',
                 onPressed: () => Get.to(() => SignUpPage()),
-                color: kPrimaryColour,
+                color: Colors.white,
               ),
               verticalSpaceSmall,
               Text(
@@ -86,7 +88,7 @@ class SignInPage extends StatelessWidget {
               TextLink(
                 text: 'Forgot password?',
                 onPressed: () => Get.to(() => ResetPasswordPage()),
-                color: kPrimaryColour,
+                color: Colors.white,
               ),
             ],
           ),

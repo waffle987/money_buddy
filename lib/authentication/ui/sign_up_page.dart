@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:money_buddy_mobile/authentication/controllers/auth_controller.dart';
+import 'package:money_buddy_mobile/config/assets.dart';
 import 'package:money_buddy_mobile/config/ui_helpers.dart';
 import 'package:money_buddy_mobile/widgets/busy_button.dart';
 import 'package:money_buddy_mobile/widgets/input_field.dart';
@@ -19,7 +20,7 @@ class SignUpPage extends StatelessWidget {
         children: [
           verticalSpaceLarge,
           Text(
-            "By joining Zap, you agree to",
+            "By joining Money Buddy, you agree to",
             textAlign: TextAlign.center,
             style: TextStyle(color: Colors.white),
           ),
@@ -27,7 +28,7 @@ class SignUpPage extends StatelessWidget {
           TextLink(
             text: "Money Buddy's General Terms of Use",
             onPressed: () {},
-            color: kPrimaryColour,
+            color: Colors.white,
           ),
           verticalSpaceSmall,
           Text(
@@ -38,7 +39,7 @@ class SignUpPage extends StatelessWidget {
           TextLink(
             text: "Money Buddy's Privacy Policy",
             onPressed: () {},
-            color: kPrimaryColour,
+            color: Colors.white,
           ),
         ],
       );
@@ -66,11 +67,12 @@ class SignUpPage extends StatelessWidget {
                     tag: 'logo',
                     transitionOnUserGestures: true,
                     child: CircleAvatar(
-                      child: Text('\$'),
+                      backgroundImage: AssetImage(Assets.logo),
                       radius: 40.0,
                       backgroundColor: kPrimaryColour,
                     ),
                   ),
+                  const SizedBox(width: 20.0),
                   Text(
                     'Sign Up',
                     style: TextStyle(
@@ -98,7 +100,7 @@ class SignUpPage extends StatelessWidget {
                 onTap: () {
                   _authController.registerWithEmailAndPassword(context);
                 },
-                color: Colors.orange.shade400,
+                color: kSecondaryColor,
               ),
               termsAndConditionsSection(),
             ],
