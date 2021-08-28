@@ -53,7 +53,7 @@ class LandingPage extends StatelessWidget {
         onPressed: () {},
         child: Icon(
           FontAwesomeIcons.plus,
-          color: Colors.white,
+          color: Colors.green,
         ),
       ),
       body: PageTransitionSwitcher(
