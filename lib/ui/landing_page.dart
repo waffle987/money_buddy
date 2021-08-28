@@ -5,6 +5,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:money_buddy_mobile/config/ui_helpers.dart';
 import 'package:money_buddy_mobile/controllers/bottom_navigation_bar_controller.dart';
+import 'package:money_buddy_mobile/ui/home.dart';
+import 'package:money_buddy_mobile/ui/profile_page.dart';
 
 class LandingPage extends StatelessWidget {
   const LandingPage({Key? key}) : super(key: key);
@@ -53,7 +55,7 @@ class LandingPage extends StatelessWidget {
         onPressed: () {},
         child: Icon(
           FontAwesomeIcons.plus,
-          color: Colors.green,
+          color: Colors.white,
         ),
       ),
       body: PageTransitionSwitcher(
@@ -82,9 +84,9 @@ class LandingPage extends StatelessWidget {
 Widget getViewForIndex(int index) {
   switch (index) {
     case 0:
-      return Scaffold();
+      return Home();
     case 1:
-      return Scaffold();
+      return ProfilePage();
     default:
       return Scaffold();
   }
