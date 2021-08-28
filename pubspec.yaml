@@ -28,6 +28,13 @@ dependencies:
   # UI dependencies
   font_awesome_flutter: ^9.1.0
 
+  # Utility dependencies
+  uuid: ^3.0.4
+
+  # Images dependencies
+  cached_network_image: ^3.0.0
+  image_picker: ^0.8.1+3
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

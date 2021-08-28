@@ -7,6 +7,7 @@ import 'package:money_buddy_mobile/config/ui_helpers.dart';
 import 'package:money_buddy_mobile/controllers/bottom_navigation_bar_controller.dart';
 import 'package:money_buddy_mobile/ui/home.dart';
 import 'package:money_buddy_mobile/ui/profile_page.dart';
+import 'package:money_buddy_mobile/ui/upload_document_page.dart';
 
 class LandingPage extends StatelessWidget {
   const LandingPage({Key? key}) : super(key: key);
@@ -52,7 +53,7 @@ class LandingPage extends StatelessWidget {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
         backgroundColor: kPrimaryColour,
-        onPressed: () {},
+        onPressed: () => Get.to(() => UploadDocumentPage()),
         child: Icon(
           FontAwesomeIcons.plus,
           color: Colors.white,
