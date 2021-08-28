@@ -6,6 +6,7 @@ import 'package:money_buddy_mobile/authentication/controllers/auth_controller.da
 import 'package:money_buddy_mobile/config/ui_helpers.dart';
 import 'package:money_buddy_mobile/ui/user_edit_profile_page.dart';
 import 'package:money_buddy_mobile/widgets/circle_button.dart';
+import 'package:money_buddy_mobile/widgets/document_feed.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -120,6 +121,7 @@ class ProfilePage extends StatelessWidget {
         child: Column(
           children: [
             _buildProfileHeader(),
+            DocumentFeed(),
           ],
         ),
       ),
