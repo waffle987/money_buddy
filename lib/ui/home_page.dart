@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:money_buddy_mobile/authentication/controllers/auth_controller.dart';
 import 'package:money_buddy_mobile/config/ui_helpers.dart';
 import 'package:money_buddy_mobile/ui/card_widget.dart';
@@ -53,28 +54,28 @@ class HomePage extends StatelessWidget {
                       horizontal: _mediaQuery.size.width * 0.25,
                       vertical: _mediaQuery.size.height * 0.03,
                     ),
-                    widget: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          '${(int.parse(_authController.firestoreUser.value!.points) % 100).toString()} points',
-                          style: TextStyle(
-                            fontSize: 25.0,
-                            fontWeight: FontWeight.w900,
-                            color: Colors.white,
-                          ),
-                        ),
-                        SizedBox(height: _mediaQuery.size.height * 0.01),
-                        Text(
-                          'Lvl ${(int.parse(_authController.firestoreUser.value!.points) ~/ 100).toString()}',
-                          style: TextStyle(
-                            fontSize: 25.0,
-                            fontWeight: FontWeight.w900,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ],
-                    ),
+                    widget: Obx(() => Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              '${(int.parse(_authController.firestoreUser.value!.points) % 100).toString()} points',
+                              style: TextStyle(
+                                fontSize: 25.0,
+                                fontWeight: FontWeight.w900,
+                                color: Colors.white,
+                              ),
+                            ),
+                            SizedBox(height: _mediaQuery.size.height * 0.01),
+                            Text(
+                              'Lvl ${(int.parse(_authController.firestoreUser.value!.points) ~/ 100).toString()}',
+                              style: TextStyle(
+                                fontSize: 25.0,
+                                fontWeight: FontWeight.w900,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ],
+                        )),
                     top: 10.0,
                     bottom: 20.0,
                     left: 20.0,
