@@ -185,6 +185,7 @@ class AuthController extends GetxController {
           username: result.user!.email!,
           userRole: 'User',
           photoUrl: '',
+          points: '0',
         );
 
         /// Create the user in firestore

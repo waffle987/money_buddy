@@ -36,6 +36,7 @@ class UserEditProfilePage extends StatelessWidget {
                 username: _usernameTextController.text.isEmpty
                     ? _authController.firestoreUser.value!.username
                     : _usernameTextController.text,
+                points: _authController.firestoreUser.value!.points,
               );
 
               _authController.updateUserFirestore(user: newUserModel);

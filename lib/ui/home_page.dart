@@ -1,154 +1,157 @@
 import 'package:flutter/material.dart';
+import 'package:money_buddy_mobile/authentication/controllers/auth_controller.dart';
+import 'package:money_buddy_mobile/config/ui_helpers.dart';
+import 'package:money_buddy_mobile/ui/card_widget.dart';
 import 'package:money_buddy_mobile/ui/loan_page.dart';
 import 'package:money_buddy_mobile/ui/quiz_page.dart';
-import 'card_widget.dart';
 
-class Home extends StatelessWidget {
-  const Home({Key? key}) : super(key: key);
+class HomePage extends StatelessWidget {
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final controller = PageController(
-      initialPage: 0,
-    );
+    final ThemeData _themeData = Theme.of(context);
+    final MediaQueryData _mediaQuery = MediaQuery.of(context);
+
+    final AuthController _authController = AuthController.to;
+
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0.0,
-        toolbarHeight: 85.0,
-        centerTitle: false,
-        title: Transform(
-          transform: Matrix4.translationValues(10.0, 0.0, 0.0),
-          child: Text(
-            'Hello User',
-            style: TextStyle(
-              fontSize: 30.0,
-            ),
-          ),
-        ),
-      ),
-      body: PageView(
-        controller: controller,
-        scrollDirection: Axis.vertical,
-        children: [
-          Container(
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(60.0),
-                topRight: Radius.circular(60.0),
-              ),
-            ),
-            child: Padding(
-              padding: EdgeInsets.only(
-                top: 20.0,
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Expanded(
-                    flex: 1,
-                    child: CardWidget(
-                      top: 20.0,
-                      bottom: 20.0,
-                      left: 20.0,
-                      right: 20.0,
-                      color: Colors.white,
-                      widget: Row(
-                        children: [
-                          Expanded(
-                            flex: 3,
-                            child: Padding(
-                              padding: EdgeInsets.symmetric(
-                                horizontal: 20.0,
-                              ),
-                              child: Text(
-                                'Total Points:',
-                                style: TextStyle(fontSize: 29.0),
-                              ),
-                            ),
-                          ),
-                          Expanded(
-                            flex: 2,
-                            child: Text(
-                              '1000',
-                              style: TextStyle(fontSize: 40.0),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    flex: 1,
-                    child: Expanded(
-                      child: CardWidget(
-                        widget: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            GestureDetector(
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) {
-                                      return LoanPage();
-                                    },
-                                  ),
-                                );
-                              },
-                              child: Text(
-                                'Take a loan',
-                                style: TextStyle(
-                                  fontSize: 25.0,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        top: 10.0,
-                        bottom: 20.0,
-                        left: 20.0,
-                        right: 20.0,
-                        color: Colors.yellow.shade400,
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    flex: 2,
-                    child: Scrollbar(
-                      child: CardWidget(
-                        widget: QuizPage(),
-                        top: 20,
-                        bottom: 20,
-                        left: 20,
-                        right: 20,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          Container(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Padding(
-                  padding: EdgeInsets.only(
-                    top: 20.0,
-                  ),
-                  child: Text(
-                    'Financial Tips and Tricks',
-                    style: TextStyle(
-                      fontSize: 30.0,
-                    ),
-                    textAlign: TextAlign.center,
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            AppBar(
+              backgroundColor: _themeData.scaffoldBackgroundColor,
+              elevation: 0.0,
+              toolbarHeight: 85.0,
+              centerTitle: false,
+              title: Transform(
+                transform: Matrix4.translationValues(10.0, 0.0, 0.0),
+                child: Text(
+                  'Hello ${_authController.firestoreUser.value!.username}',
+                  style: TextStyle(
+                    fontSize: 30.0,
+                    color: Colors.black,
+                    fontWeight: FontWeight.w900,
                   ),
                 ),
-                Expanded(
-                  child: CardWidget(
-                    widget: ListView(
+              ),
+            ),
+            Container(
+              width: double.infinity,
+              decoration: BoxDecoration(
+                color: kSecondaryColor,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(60.0),
+                  topRight: Radius.circular(60.0),
+                ),
+              ),
+              child: Column(
+                children: [
+                  SizedBox(height: _mediaQuery.size.height * 0.05),
+                  CardWidget(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: _mediaQuery.size.width * 0.25,
+                      vertical: _mediaQuery.size.height * 0.03,
+                    ),
+                    widget: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          '${(int.parse(_authController.firestoreUser.value!.points) % 100).toString()} points',
+                          style: TextStyle(
+                            fontSize: 25.0,
+                            fontWeight: FontWeight.w900,
+                            color: Colors.white,
+                          ),
+                        ),
+                        SizedBox(height: _mediaQuery.size.height * 0.01),
+                        Text(
+                          'Lvl ${(int.parse(_authController.firestoreUser.value!.points) ~/ 100).toString()}',
+                          style: TextStyle(
+                            fontSize: 25.0,
+                            fontWeight: FontWeight.w900,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ],
+                    ),
+                    top: 10.0,
+                    bottom: 20.0,
+                    left: 20.0,
+                    right: 20.0,
+                    color: Colors.teal,
+                  ),
+                  CardWidget(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: _mediaQuery.size.width * 0.25,
+                      vertical: _mediaQuery.size.height * 0.03,
+                    ),
+                    widget: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) {
+                                  return LoanPage();
+                                },
+                              ),
+                            );
+                          },
+                          child: Text(
+                            'Take a loan',
+                            style: TextStyle(
+                              fontSize: 25.0,
+                              fontWeight: FontWeight.w900,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    top: 10.0,
+                    bottom: 20.0,
+                    left: 20.0,
+                    right: 20.0,
+                    color: Colors.teal,
+                  ),
+                  Container(
+                    height: _mediaQuery.size.height * 0.5,
+                    child: CardWidget(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 0,
+                        vertical: 0,
+                      ),
+                      widget: QuizPage(),
+                      top: 20,
+                      bottom: 20,
+                      left: 20,
+                      right: 20,
+                      color: Colors.white,
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(
+                      top: 20.0,
+                    ),
+                    child: Text(
+                      'Financial Tips and Tricks',
+                      style: TextStyle(
+                        fontSize: 30.0,
+                        color: Colors.white,
+                        fontWeight: FontWeight.w900,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                  CardWidget(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 0,
+                      vertical: 0,
+                    ),
+                    widget: Column(
                       children: [
                         ExpansionTile(
                           textColor: Colors.red,
@@ -253,12 +256,12 @@ class Home extends StatelessWidget {
                     left: 10,
                     right: 10,
                     color: Colors.white,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
+                  )
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

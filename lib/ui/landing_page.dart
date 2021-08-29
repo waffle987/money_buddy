@@ -3,9 +3,8 @@ import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:money_buddy_mobile/config/ui_helpers.dart';
 import 'package:money_buddy_mobile/controllers/bottom_navigation_bar_controller.dart';
-import 'package:money_buddy_mobile/ui/home.dart';
+import 'package:money_buddy_mobile/ui/home_page.dart';
 import 'package:money_buddy_mobile/ui/profile_page.dart';
 import 'package:money_buddy_mobile/ui/upload_document_page.dart';
 
@@ -33,9 +32,9 @@ class LandingPage extends StatelessWidget {
             FontAwesomeIcons.solidUserCircle,
           ],
           backgroundColor: Colors.white,
-          activeColor: kPrimaryColour,
-          splashColor: kPrimaryColour,
-          inactiveColor: kPrimaryColour.withOpacity(0.3),
+          activeColor: Colors.teal,
+          splashColor: Colors.teal,
+          inactiveColor: Colors.teal.withOpacity(0.3),
           iconSize: 30.0,
           gapLocation: GapLocation.center,
           activeIndex: bottomNavigationBarController.tabIndex.value,
@@ -52,7 +51,7 @@ class LandingPage extends StatelessWidget {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
-        backgroundColor: kPrimaryColour,
+        backgroundColor: Colors.teal,
         onPressed: () => Get.to(() => UploadDocumentPage()),
         child: Icon(
           FontAwesomeIcons.plus,
@@ -85,7 +84,7 @@ class LandingPage extends StatelessWidget {
 Widget getViewForIndex(int index) {
   switch (index) {
     case 0:
-      return Home();
+      return HomePage();
     case 1:
       return ProfilePage();
     default:

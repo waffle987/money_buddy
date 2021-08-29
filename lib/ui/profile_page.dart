@@ -95,7 +95,7 @@ class ProfilePage extends StatelessWidget {
           CircleButton(
             icon: FontAwesomeIcons.solidEdit,
             function: () => Get.to(() => UserEditProfilePage()),
-            buttonColour: kPrimaryColour,
+            buttonColour: Colors.teal,
             iconColour: _themeData.accentColor,
           ),
           SizedBox(width: _mediaQuery.size.width * 0.03),

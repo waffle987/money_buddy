@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:money_buddy_mobile/ui/card_widget.dart';
 
@@ -17,6 +15,10 @@ class LoanWidget extends StatelessWidget {
     return Container(
       height: 100.0,
       child: CardWidget(
+        padding: EdgeInsets.symmetric(
+          horizontal: 0,
+          vertical: 0,
+        ),
         widget: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [

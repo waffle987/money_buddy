@@ -7,6 +7,7 @@ class CardWidget extends StatelessWidget {
   final double left;
   final double right;
   final Color color;
+  final EdgeInsets padding;
 
   CardWidget({
     required this.widget,
@@ -15,6 +16,7 @@ class CardWidget extends StatelessWidget {
     required this.left,
     required this.right,
     required this.color,
+    required this.padding,
   });
 
   @override
@@ -26,6 +28,7 @@ class CardWidget extends StatelessWidget {
         left: left,
         right: right,
       ),
+      padding: padding,
       decoration: BoxDecoration(
         color: color,
         borderRadius: BorderRadius.all(

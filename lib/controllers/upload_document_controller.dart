@@ -30,6 +30,8 @@ class UploadDocumentController extends GetxController {
   }) async {
     final CollectionReference _merchantPostCollectionReference =
         FirebaseFirestore.instance.collection('user documents');
+    final CollectionReference _userCollectionReference =
+        FirebaseFirestore.instance.collection('users');
 
     CloudStorageResult storageResult;
     String _id = Uuid().v4();
@@ -50,6 +52,15 @@ class UploadDocumentController extends GetxController {
         "photoUrl": selectedImage != null ? storageResult.imageUrl : '',
         "documentId": _id,
         "fileName": selectedImage != null ? storageResult.imageFileName : '',
+      });
+
+      final newPoints =
+          int.parse(_authController.firestoreUser.value!.points) + 50;
+
+      _userCollectionReference
+          .doc(_authController.firebaseUser.value!.uid)
+          .update({
+        'points': newPoints.toString(),
       });
     }
   }

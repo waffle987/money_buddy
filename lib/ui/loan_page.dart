@@ -14,7 +14,7 @@ class _LoanPageState extends State<LoanPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Loans',
+          'Current Loan Rates',
         ),
       ),
       body: Column(

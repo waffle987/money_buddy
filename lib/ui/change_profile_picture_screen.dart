@@ -159,6 +159,7 @@ class ChangeProfilePicturePage extends StatelessWidget {
                         userRole: _authController.firestoreUser.value!.userRole,
                         photoUrl: _result.imageUrl!,
                         username: _authController.firestoreUser.value!.username,
+                        points: _authController.firestoreUser.value!.points,
                       );
 
                       _authController.updateUserFirestore(user: newUserModel);

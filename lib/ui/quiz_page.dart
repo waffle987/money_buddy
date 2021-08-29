@@ -122,6 +122,10 @@ class _QuizPageState extends State<QuizPage> {
                 children: scoreKeeper
                     .map(
                       (data) => CardWidget(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 0,
+                          vertical: 0,
+                        ),
                         widget: Padding(
                           padding: EdgeInsets.all(10.0),
                           child: Text(
