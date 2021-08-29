@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:money_buddy_mobile/model/questionnaire_model.dart';
+import 'package:money_buddy_mobile/ui/quiz_page.dart';
 import 'card_widget.dart';
 
 class Home extends StatelessWidget {
@@ -71,142 +73,38 @@ class Home extends StatelessWidget {
               ),
               Expanded(
                 flex: 1,
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: CardWidget(
-                        widget: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              'Take a loan',
-                              style: TextStyle(
-                                fontSize: 25.0,
-                              ),
-                            ),
-                          ],
+                child: Expanded(
+                  child: CardWidget(
+                    widget: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'Take a loan',
+                          style: TextStyle(
+                            fontSize: 25.0,
+                          ),
                         ),
-                        top: 10.0,
-                        bottom: 10.0,
-                        left: 20.0,
-                        right: 10.0,
-                        color: Colors.yellow.shade400,
-                      ),
+                      ],
                     ),
-                    Expanded(
-                      child: CardWidget(
-                        widget: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              'Upcoming loans',
-                              style: TextStyle(
-                                fontSize: 22.0,
-                              ),
-                            ),
-                          ],
-                        ),
-                        top: 10.0,
-                        bottom: 10.0,
-                        left: 10.0,
-                        right: 20.0,
-                        color: Colors.red.shade400,
-                      ),
-                    ),
-                  ],
+                    top: 10.0,
+                    bottom: 20.0,
+                    left: 20.0,
+                    right: 20.0,
+                    color: Colors.yellow.shade400,
+                  ),
                 ),
               ),
               Expanded(
                 flex: 2,
-                child: CardWidget(
-                  widget: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        children: [
-                          Expanded(
-                            child: Padding(
-                              padding: EdgeInsets.only(left: 10.0, top: 10.0),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    'Total Loan Paid',
-                                    style: TextStyle(fontSize: 17.0),
-                                  ),
-                                  Text(
-                                    '\$100.00',
-                                    style: TextStyle(
-                                      fontSize: 30.0,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                          Expanded(
-                            child: Padding(
-                              padding: EdgeInsets.only(left: 10.0, top: 10.0),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    'Total Loan Remaining',
-                                    style: TextStyle(fontSize: 17.0),
-                                  ),
-                                  Text(
-                                    '\$900.00',
-                                    style: TextStyle(
-                                      fontSize: 30.0,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(
-                          left: 10.0,
-                          right: 10.0,
-                          top: 10.0,
-                        ),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(10.0),
-                          ),
-                          child: LinearProgressIndicator(
-                            backgroundColor: Colors.grey.shade300,
-                            valueColor: AlwaysStoppedAnimation(
-                              Colors.green.shade400,
-                            ),
-                            minHeight: 35.0,
-                            value: 0.1,
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(
-                          left: 10.0,
-                          top: 15.0,
-                        ),
-                        child: Text(
-                          'Next installment on Nov 30, 2021: \$50.00',
-                          style: TextStyle(
-                            fontSize: 17.0,
-                          ),
-                        ),
-                      ),
-                    ],
+                child: Scrollbar(
+                  child: CardWidget(
+                    widget: QuizPage(),
+                    top: 20,
+                    bottom: 20,
+                    left: 20,
+                    right: 20,
+                    color: Colors.white,
                   ),
-                  top: 20,
-                  bottom: 20,
-                  left: 20,
-                  right: 20,
-                  color: Colors.white,
                 ),
               ),
             ],
