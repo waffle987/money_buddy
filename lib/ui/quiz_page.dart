@@ -141,14 +141,21 @@ class _QuizPageState extends State<QuizPage> {
                     .toList(),
               ),
             ),
-            ElevatedButton(
-              onPressed: () {
-                setState(() {
-                  _selectedIndex = 0;
-                  questionnaire.reset();
-                });
-              },
-              child: Text('Reset Quiz'),
+            Container(
+              margin: EdgeInsets.only(
+                bottom: 10.0,
+              ),
+              child: ElevatedButton(
+                onPressed: () {
+                  setState(() {
+                    _selectedIndex = 0;
+                    questionnaire.reset();
+                  });
+                },
+                child: Text(
+                  'Reset Quiz',
+                ),
+              ),
             ),
           ],
         ),

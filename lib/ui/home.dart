@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:money_buddy_mobile/ui/loan_page.dart';
 import 'package:money_buddy_mobile/ui/quiz_page.dart';
 import 'card_widget.dart';
 
@@ -84,10 +85,22 @@ class Home extends StatelessWidget {
                         widget: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text(
-                              'Take a loan',
-                              style: TextStyle(
-                                fontSize: 25.0,
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) {
+                                      return LoanPage();
+                                    },
+                                  ),
+                                );
+                              },
+                              child: Text(
+                                'Take a loan',
+                                style: TextStyle(
+                                  fontSize: 25.0,
+                                ),
                               ),
                             ),
                           ],
